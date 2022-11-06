@@ -1,0 +1,78 @@
+image: node:latest
+
+variables:
+    REPO_NAME: https://gitlab.com/remotejob/typescriptdemosite
+    DEV_SERVER: 129.151.192.192
+    PROD_SERVER: 129.151.192.192
+    BINRES: wsserver
+    DEV_DIR: $REPO_NAME
+    PROD_DIR: $REPO_NAME
+    SERVICEFILE: $BINRES.service
+    DOC: useful.bash
+
+before_script:
+    - apt-get update -qq
+    # - apt-get install -qq git
+    # Setup SSH deploy keys
+    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'   
+    - mkdir -p /src/$(dirname $REPO_NAME)
+    - ln -svf $CI_PROJECT_DIR /src/$REPO_NAME
+    - curl -fsSL https://get.pnpm.io/install.sh | bash -
+    - cd /src/$REPO_NAME
+
+stages:
+    - build
+    - deploy
+    
+compile_development:
+    stage: build
+    only:
+        - tags
+    script:
+        # - curl -fsSL https://get.pnpm.io/install.sh | bash -
+        - source /root/.bashrc
+        - pnpm install
+        - pnpm run build
+
+    artifacts:
+        expire_in: 1 week
+        paths:
+        - dist
+compile_production:
+    stage: build
+    only:
+        - main
+    script:
+        - source /root/.bashrc
+        - pnpm install
+        - pnpm run build 
+    artifacts:
+        expire_in: 1 week
+        paths:
+        - dist        
+
+deploy_development:
+  stage: deploy
+  environment:
+    name: staging  
+  script:
+    - ssh ubuntu@$DEV_SERVER "rm -fr  /tmp/$DEV_DIR && mkdir -p /tmp/$DEV_DIR && exit" 
+    - scp -r $CI_PROJECT_DIR/dist ubuntu@$DEV_SERVER:/tmp/$DEV_DIR/
+    - ssh ubuntu@$DEV_SERVER "sudo cp -a /tmp/$DEV_DIR/dist/* /mnt/demosite/dist/"
+  only:
+    - tags
+    
+deploy_production:
+  stage: deploy
+  environment:
+    name: staging
+  script:
+    - ssh ubuntu@$DEV_SERVER "rm -fr  /tmp/$DEV_DIR && mkdir -p /tmp/$DEV_DIR && exit" 
+    - scp -r $CI_PROJECT_DIR/dist ubuntu@$DEV_SERVER:/tmp/$DEV_DIR/
+    - ssh ubuntu@$DEV_SERVER "sudo cp -a /tmp/$DEV_DIR/dist/* /mnt/demosite/dist/"
+  only:
+    - main  
