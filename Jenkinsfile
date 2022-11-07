@@ -28,7 +28,7 @@ pipeline {
 
             // when {buildingTag()
             // }
-            when { tag "*-eu"} 
+            when { tag "v*"} 
             steps {
                
                 echo 'Deploying'
