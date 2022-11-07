@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo 'Deploying'
                 // // echo "[remote-host] $F_NAME $L_NAME. Current date and time"
-                sshagent([k3s]) {
+                sshagent(credentials: ['k3s']) {
                     sh '''
                     ssh -o StricHostKeyChecking=no ubuntu@129.151.192.192 ls '''
 
