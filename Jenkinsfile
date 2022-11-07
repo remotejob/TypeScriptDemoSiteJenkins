@@ -21,9 +21,9 @@ pipeline {
         }
         stage('Deploy') {
 
-            // when {buildingTag()
-            //     beforeAgent true
-            // }
+            when {buildingTag()
+                beforeAgent true
+            }
             steps {
                
                 echo 'Deploying'
