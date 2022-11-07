@@ -20,7 +20,10 @@ pipeline {
             }
         }
         stage('Deploy') {
+
+            when { tag "v*" }
             steps {
+               
                 echo 'Deploying'
                 sh 'ls -trl dist'               
                 sshagent(credentials: ['k3s']) {
