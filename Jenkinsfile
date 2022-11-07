@@ -21,12 +21,13 @@ pipeline {
         }
         stage('Deploy') {
 
-            when {buildingTag()
-                beforeAgent true
-            }
+            // when {buildingTag()
+            //     beforeAgent true
+            // }
             steps {
                
                 echo 'Deploying'
+                echo env.TAG_NAME
                 sh 'ls -trl dist'               
                 sshagent(credentials: ['k3s']) {
                     
