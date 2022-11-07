@@ -32,7 +32,8 @@ pipeline {
                
                 echo 'Deploying'
                 echo env.TAG_NAME
-                sh 'ls -trl dist'               
+                // sh 'ls -trl dist' 
+                 when { tag "*-eu"}             
                 sshagent(credentials: ['k3s']) {
                     
                     sh '''
