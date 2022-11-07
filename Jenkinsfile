@@ -7,6 +7,11 @@ pipeline {
         }
     }
 
+    environment {
+        TAG_NAME = sh(returnStdout: true, script: "git describe --tags").trim()
+
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -22,7 +27,6 @@ pipeline {
         stage('Deploy') {
 
             when {buildingTag()
-                beforeAgent true
             }
             steps {
                
