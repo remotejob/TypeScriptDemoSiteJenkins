@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                bash 'curl -fsSL https://get.pnpm.io/install.sh | bash -'
+                sh 'curl -fsSL https://get.pnpm.io/install.sh | bash -'
                 
             }
         }
