@@ -22,14 +22,14 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying'
-                // // echo "[remote-host] $F_NAME $L_NAME. Current date and time"
                 
                 sshagent(credentials: ['k3s']) {
+                    ls -trl
                     sh '''
                     [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
                     ssh-keyscan -t rsa,dsa 129.151.192.192 >> ~/.ssh/known_hosts                   
                     ssh ubuntu@129.151.192.192 'ls -trl'
-                    
+
                     '''
 
                 } 
