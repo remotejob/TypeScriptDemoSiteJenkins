@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying'
-                ls -trl               
+                sh 'ls -trl'               
                 sshagent(credentials: ['k3s']) {
                     
                     sh '''
