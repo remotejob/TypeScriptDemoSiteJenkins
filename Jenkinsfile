@@ -26,8 +26,8 @@ pipeline {
         }
         stage('Deploy') {
 
-            when {buildingTag()
-            }
+            // when {buildingTag()
+            // }
             steps {
                
                 echo 'Deploying'
