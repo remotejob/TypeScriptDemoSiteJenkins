@@ -13,15 +13,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'npm install'
+                curl -fsSL https://get.pnpm.io/install.sh | sh -
+                // sh 'npm install'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                sh 'npm test'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         echo 'Testing...'
+        //         sh 'npm test'
+        //     }
+        // }
     }
 }
 
