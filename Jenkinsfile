@@ -1,5 +1,3 @@
-#!/usr/bin/env groovy
-
 pipeline {
 
     agent {
@@ -14,15 +12,9 @@ pipeline {
             steps {
                 echo 'Building...'
                 curl -fsSL 'https://get.pnpm.io/install.sh | sh -'
-                // sh 'npm install'
+                
             }
         }
-        // stage('Test') {
-        //     steps {
-        //         echo 'Testing...'
-        //         sh 'npm test'
-        //     }
-        // }
     }
 }
 
