@@ -12,7 +12,8 @@ pipeline {
             steps {
                 echo 'Building...'
                 sh 'curl -fsSL https://get.pnpm.io/install.sh | bash -'
-                sh 'source /root/.bashrc'
+                sh 'export PNPM_HOME="/root/.local/share/pnpm"'
+                sh 'export PATH="$PNPM_HOME:$PATH"'
                 sh 'pnpm install'
                 sh 'pnpm build'
                 
