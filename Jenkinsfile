@@ -21,7 +21,9 @@ pipeline {
         }
         stage('Deploy') {
 
-            when { tag "v*" }
+            when {buildingTag()
+                beforeAgent true
+            }
             steps {
                
                 echo 'Deploying'
