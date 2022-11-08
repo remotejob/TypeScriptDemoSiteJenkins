@@ -23,4 +23,5 @@ tags
 +refs/tags/v*’:’refs/remotes/origin/tags/v*
 
 main
-+refs/heads/*:refs/remotes/origin/* 
++refs/heads/*:refs/remotes/origin/*
+
