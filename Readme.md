@@ -17,7 +17,7 @@ pnpm run build && scp -r dist k3sclient10:/tmp && ssh k3sclient10 "sudo rm -rf /
 kubectl rollout restart deployment edgecenter-ml-depl -n webs-dev
 
 Deployment by jenkins tag tag ksksk  ksksks kksk
-build try manual tags
+build try manual tags lsls
 
 tags
 +refs/tags/v*’:’refs/remotes/origin/tags/v*
