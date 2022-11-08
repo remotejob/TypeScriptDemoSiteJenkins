@@ -16,7 +16,7 @@ pnpm run dev --host 192.168.1.200
 pnpm run build && scp -r dist k3sclient10:/tmp && ssh k3sclient10 "sudo rm -rf /mnt/demosite/dist/*"  && ssh k3sclient10 "sudo cp -a /tmp/dist/* /mnt/demosite/dist/" \
 kubectl rollout restart deployment edgecenter-ml-depl -n webs-dev
 
-Deployment by jenkins tag tag ksksk  ksksks kksk
+Deployment by jenkins tag tag ksksk  ksksks kksk branch
 build try manual tags rstart
 
 tags
