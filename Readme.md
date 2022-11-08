@@ -18,3 +18,6 @@ kubectl rollout restart deployment edgecenter-ml-depl -n webs-dev
 
 Deployment by jenkins tag tag ksksk  ksksks kksk
 ksksk??? build
+
+tags
++refs/tags/v*’:’refs/remotes/origin/tags/v*
