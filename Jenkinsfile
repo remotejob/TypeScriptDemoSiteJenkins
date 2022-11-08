@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Deploy') {
 
-            when {buildingTag()
+            when {buildingTag()}
             // }
             // when { tag "v*"} 
             steps {
