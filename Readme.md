@@ -22,6 +22,8 @@ build try manual tags try branches
 tags
 +refs/tags/v*’:’refs/remotes/origin/tags/v*
 
+*/tags/*
+
 main
 +refs/heads/*:refs/remotes/origin/*
 

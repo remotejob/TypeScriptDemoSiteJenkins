@@ -26,12 +26,10 @@ pipeline {
         }
         stage('Deploy') {
 
-            when {buildingTag()}
-            // }
-            // when { tag "v*"} 
+            when { tag "v*"} 
             steps {
                
-                echo 'Deploying'
+                echo 'Deploying Staging'
                 echo env.TAG_NAME
                 // sh 'ls -trl dist' 
                             
@@ -41,14 +39,24 @@ pipeline {
                     [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
                     ssh-keyscan -t rsa,dsa 129.151.192.192 >> ~/.ssh/known_hosts                   
                     ssh ubuntu@129.151.192.192 'ls -trl'
-
                     '''
 
-                } 
-                
+                }                
                  
             }
         }
+         stage('DeployProd') {
+            when { tag "prod*"}
+            steps {
+
+                echo 'Deploying Production'
+                echo env.TAG_NAME
+
+            }
+
+
+         }
+
     }
 }
 
