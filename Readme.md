@@ -1,3 +1,7 @@
+Docs:
+https://vitejs.dev/
+https://www.jenkins.io/
+
 WORKFLOW
 
 nvm ls-remote 
