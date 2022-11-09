@@ -21,8 +21,8 @@ kubectl rollout restart deployment edgecenter-ml-depl -n webs-dev
 
 Deployment by jenkins tag 
 
-git tag -a prod0.0.0 -m "prod0.0.0" && git push origin --tags
-git tag -a v0.0.31 -m "prod0.0.31" && git push origin --tags
+git tag -a prod0.0.2 -m "prod0.0.2" && git push origin --tags
+git tag -a v0.0.34 -m "v0.0.34" && git push origin --tags
 
 tags
 +refs/tags/v*’:’refs/remotes/origin/tags/v*
