@@ -11,19 +11,18 @@ pnpm install
 pnpm install -D eslint
 pnpm run dev --host 192.168.1.200
 
-
 #DEPLOYMENT
 pnpm run build && scp -r dist k3sclient10:/tmp && ssh k3sclient10 "sudo rm -rf /mnt/demosite/dist/*"  && ssh k3sclient10 "sudo cp -a /tmp/dist/* /mnt/demosite/dist/" \
 kubectl rollout restart deployment edgecenter-ml-depl -n webs-dev
 
-Deployment by jenkins tag tag ksksk  ksksks kksk branch try again
-build try manual tags try branches
+Deployment by jenkins tag 
+
+git tag -a prod0.0.0 -m "prod0.0.0" && git push origin --tags
 
 tags
 +refs/tags/v*’:’refs/remotes/origin/tags/v*
-
 */tags/*
 
-main
+main (original)
 +refs/heads/*:refs/remotes/origin/*
 
