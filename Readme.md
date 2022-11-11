@@ -31,5 +31,5 @@ tags
 main (original)
 +refs/heads/*:refs/remotes/origin/*
 
-new server http://144.21.36.80:3000/
+new server http://144.21.36.80:3000/  not work
 
