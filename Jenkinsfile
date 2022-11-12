@@ -33,14 +33,14 @@ pipeline {
                
                 echo 'Deploying Staging'
                 echo env.TAG_NAME
-                // sh 'ls -trl dist' 
+                sh 'ls -trl dist' 
                             
                 sshagent(credentials: ['k3s']) {
                     
                     sh '''
                     [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-                    ssh-keyscan -t rsa,dsa 129.151.192.192 >> ~/.ssh/known_hosts                   
-                    ssh ubuntu@129.151.192.192 'ls -trl'
+                    ssh-keyscan -t rsa,dsa 129.151.215.180 >> ~/.ssh/known_hosts                   
+                    ssh ubuntu@129.151.215.180 'ls -trl'
                     '''
 
                 }                
