@@ -1,17 +1,17 @@
 pipeline {
 
-    agent {
-        any
-        // docker {
-        //     image 'node:latest'
-        //     args '-u root'
-        // }
-    }
+    // agent {
+    //     any
+    //     // docker {
+    //     //     image 'node:latest'
+    //     //     args '-u root'
+    //     // }
+    // }
 
-    environment {
-        TAG_NAME = sh(returnStdout: true, script: "git describe --tags").trim()
+    // environment {
+    //     TAG_NAME = sh(returnStdout: true, script: "git describe --tags").trim()
 
-    }
+    // }
 
     // stages {
     //     stage('Build') {
@@ -59,5 +59,5 @@ pipeline {
          }
 
     }
-}
+
 
