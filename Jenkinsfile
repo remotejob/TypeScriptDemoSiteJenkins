@@ -13,7 +13,7 @@ pipeline {
 
     // }
 
-    // stages {
+    stages {
     //     stage('Build') {
     //         steps {
     //             echo 'Building...'
@@ -25,6 +25,7 @@ pipeline {
                 
     //         }
     //     }
+
         stage('Deploy') {
 
             // when { tag "v*"} 
@@ -46,7 +47,7 @@ pipeline {
                  
             }
         }
-         stage('DeployProd') {
+        stage('DeployProd') {
             when { tag "prod*"}
             steps {
 
@@ -59,5 +60,7 @@ pipeline {
          }
 
     }
+
+}
 
 
