@@ -33,7 +33,7 @@ pipeline {
                
                 echo 'Deploying Staging'
                 echo env.TAG_NAME
-                sh 'ls -trl dist' 
+                sh 'ls -trl' 
                             
                 sshagent(credentials: ['k3s']) {
                     
