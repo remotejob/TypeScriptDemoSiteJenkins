@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'agent10'}
     // agent {
     //     any
     //     // docker {
