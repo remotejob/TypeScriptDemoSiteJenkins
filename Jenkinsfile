@@ -1,6 +1,4 @@
-containerTemplate(yaml: '''
-
-apiVersion: v1
+containerTemplate(yaml: '''apiVersion: v1
 kind: Pod
 metadata:
   name: node
@@ -25,8 +23,7 @@ spec:
 
   restartPolicy: Always
 
-    '''
-  ) {
+ ''') {
 
     node(POD_LABEL) {
 
