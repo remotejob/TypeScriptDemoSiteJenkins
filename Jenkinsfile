@@ -1,7 +1,18 @@
 podTemplate(containers: [
     
     containerTemplate(name: 'node', image: 'node', command: 'sleep', args: '99d')
-  ]) {
+  ],
+
+  volumes: [
+  persistentVolumeClaim(
+      mountPath: '/tmp', 
+      claimName: 'longhorn-demoite-pvc', 
+      readOnly: false
+      )
+
+  ]
+  
+  ) {
 
     node(POD_LABEL) {
 
@@ -10,6 +21,9 @@ podTemplate(containers: [
             container('node') {
                 stage('Build a Node project') {
                     sh '''
+
+                    ls -trl
+                    ls -trl /tmp
                   
                     '''
                 }
