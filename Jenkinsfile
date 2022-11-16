@@ -5,7 +5,7 @@ podTemplate(containers: [
 
   volumes: [
   persistentVolumeClaim(
-      mountPath: '/tmp', 
+      mountPath: '/demo', 
       claimName: 'longhorn-jenkins-pvc', 
       readOnly: false
       )
@@ -29,7 +29,9 @@ podTemplate(containers: [
 
                     pwd    
                     ls -trl
-                    ls -trl /tmp
+                    ls -trl /
+                    ls -trl /tmp/
+                    ls -trl /demo
                   
                     '''
                 }
