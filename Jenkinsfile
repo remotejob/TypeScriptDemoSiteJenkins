@@ -1,18 +1,16 @@
 podTemplate(containers: [
     
-    containerTemplate(name: 'golang', image: 'golang', command: 'sleep', args: '99d')
+    containerTemplate(name: 'node', image: 'node', command: 'sleep', args: '99d')
   ]) {
 
     node(POD_LABEL) {
 
-        stage('Get a Golang project') {
-            git url: 'https://github.com/hashicorp/terraform.git', branch: 'main'
-            container('golang') {
-                stage('Build a Go project') {
+        stage('Get a Node project') {
+            // git url: 'https://github.com/hashicorp/terraform.git', branch: 'main'
+            container('node') {
+                stage('Build a Node project') {
                     sh '''
-                    mkdir -p /go/src/github.com/hashicorp
-                    ln -s `pwd` /go/src/github.com/hashicorp/terraform
-                    cd /go/src/github.com/hashicorp/terraform && make
+                  
                     '''
                 }
             }
