@@ -3,14 +3,14 @@ podTemplate(containers: [
     containerTemplate(name: 'node', image: 'node', command: 'sleep', args: '99d')
   ],
 
-  volumes: [
-  persistentVolumeClaim(
-      mountPath: '/tmp', 
-      claimName: 'longhorn-demoite-pvc', 
-      readOnly: false
-      )
+//   volumes: [
+//   persistentVolumeClaim(
+//       mountPath: '/tmp', 
+//       claimName: 'longhorn-demoite-pvc', 
+//       readOnly: false
+//       )
 
-  ]
+//   ]
   
   ) {
 
