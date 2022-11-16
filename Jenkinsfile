@@ -29,7 +29,7 @@ podTemplate(containers: [
                     pwd    
                     ls -trl /tmp/*
                     ls -trl /demo
-                    ls -trl /demo/result
+                    ls -trl /demo/result/dist
                   
                     '''
                 }
