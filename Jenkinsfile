@@ -1,6 +1,4 @@
-podTemplate(containers: [
-    // containerTemplate(name: 'node', image: 'node:latest', command: 'sleep', args: '99d')
-    containerTemplate(yaml: '''
+containerTemplate(yaml: '''
 
 apiVersion: v1
 kind: Pod
@@ -28,7 +26,7 @@ spec:
   restartPolicy: Always
 
     '''
-  ]) {
+  ) {
 
     node(POD_LABEL) {
 
