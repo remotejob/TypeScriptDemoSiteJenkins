@@ -32,8 +32,8 @@ podTemplate(containers: [
                     ls -trl /
                     ls -trl /tmp/*
                     ls -trl /demo
-                    mkdir /demo/result/
-                    cp -a /home/jenkins/agent/workspace/TypeScriptDemoSite/dist /demo/result
+                    // mkdir /demo/result/
+                    // cp -a /home/jenkins/agent/workspace/TypeScriptDemoSite/dist /demo/result
                   
                     '''
                 }
