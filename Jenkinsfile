@@ -17,7 +17,7 @@ podTemplate(containers: [
     node(POD_LABEL) {
 
         stage('Get a Node project') {
-            // git url: 'https://github.com/hashicorp/terraform.git', branch: 'main'
+            git url: 'https://github.com/remotejob/TypeScriptDemoSiteJenkins.git', branch: 'main'
             container('node') {
                 stage('Build a Node project') {
                     sh '''
