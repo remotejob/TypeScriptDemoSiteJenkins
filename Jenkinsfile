@@ -30,7 +30,7 @@ podTemplate(containers: [
                     pwd    
                     ls -trl
                     ls -trl /
-                    ls -trl /tmp/
+                    ls -trl /tmp/*
                     ls -trl /demo
                   
                     '''
