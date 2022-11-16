@@ -1,11 +1,11 @@
-containerTemplate(yaml: '''apiVersion: v1
+podTemplate(yaml: '''
+apiVersion: v1
 kind: Pod
 metadata:
   name: node
   labels:
     app: node
 spec:
- 
   containers:
   - image: node:latest
     command:
