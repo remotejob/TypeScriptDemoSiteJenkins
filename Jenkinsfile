@@ -26,14 +26,10 @@ podTemplate(containers: [
                     export PATH="$PNPM_HOME:$PATH"
                     /root/.local/share/pnpm/pnpm install
                     /root/.local/share/pnpm/pnpm build
-
                     pwd    
-                    ls -trl
-                    ls -trl /
                     ls -trl /tmp/*
                     ls -trl /demo
-                    // mkdir /demo/result/
-                    // cp -a /home/jenkins/agent/workspace/TypeScriptDemoSite/dist /demo/result
+                    ls -trl /demo/result
                   
                     '''
                 }
