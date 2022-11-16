@@ -1,66 +1,22 @@
-pipeline {
-    agent {label 'agent10'}
-    // agent {
-    //     any
-    //     // docker {
-    //     //     image 'node:latest'
-    //     //     args '-u root'
-    //     // }
-    // }
+podTemplate(containers: [
+    containerTemplate(name: 'node', image: 'node', command: 'sleep', args: '99d')
+  ]) {
 
-    environment {
-        TAG_NAME = sh(returnStdout: true, script: "git describe --tags").trim()
+    node(POD_LABEL) {
 
-    }
-
-    stages {
-    //     stage('Build') {
-    //         steps {
-    //             echo 'Building...'
-    //             sh 'curl -fsSL https://get.pnpm.io/install.sh | bash -'
-    //             sh 'export PNPM_HOME="/root/.local/share/pnpm"'
-    //             sh 'export PATH="$PNPM_HOME:$PATH"'
-    //             sh '/root/.local/share/pnpm/pnpm install'
-    //             sh '/root/.local/share/pnpm/pnpm build'
-                
-    //         }
-    //     }
-
-        stage('Deploy') {
-
-            // when { tag "v*"} 
-            steps {
-               
-                echo 'Deploying Staging'
-                echo env.TAG_NAME
-                sh 'ls -trl' 
-                            
-                sshagent(credentials: ['k3s']) {
-                    
+        stage('Get a Node project') {
+            git url: 'https://github.com/remotejob/TypeScriptDemoSiteJenkins.git', branch: 'main'
+            container('node') {
+                stage('Build a Node project') {
                     sh '''
-                    [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-                    ssh-keyscan -t rsa,dsa 129.151.215.180 >> ~/.ssh/known_hosts                   
-                    ssh ubuntu@129.151.215.180 'docker ps'
-                    '''
 
-                }                
-                 
+                    ls -trl
+ 
+                    '''
+                }
             }
         }
-        stage('DeployProd') {
-            when { tag "prod*"}
-            steps {
-
-                echo 'Deploying Production'
-                echo env.TAG_NAME
-
-            }
-
-
-         }
 
     }
-
 }
-
 
